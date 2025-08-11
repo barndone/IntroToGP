@@ -1,0 +1,8 @@
+﻿  BaseAbility.cpp
+C:\Users\brandon.eiler\source\repos\IntroToGP\IntroToGP\BaseAbility.cpp(11,22): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  BaseDecision.cpp
+  Entity.cpp
+  ShouldHealDecision.cpp
+  main.cpp
+  Generating Code...
+  IntroToGP.vcxproj -> C:\Users\brandon.eiler\source\repos\IntroToGP\x64\Debug\IntroToGP.exe
