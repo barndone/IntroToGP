@@ -5,13 +5,15 @@
 #include <stdlib.h>
 //  corresponds to to_string for integers and what have you
 #include <string>
-
 //  corresponds to a map data type- key : value association
 #include <unordered_map>
 
 //  we wrote these :)
 #include "Entity.h"
 #include "BaseAbility.h"
+#include "ShouldHealDecision.h"
+#include "CheckHealCDDecision.h"
+#include "BaseDecision.h"
 using namespace std;
 
 int main()
@@ -27,7 +29,6 @@ int main()
     //  set up an ablity to have a cooldown
     testAbilityTwo->SetCD(3);
 
-
     Entity* testPlayer = new Entity();
     testPlayer->SetName("Player");
     //  TODO: set up setters/getters for attack, defence, etc
@@ -40,6 +41,28 @@ int main()
     targetDummyB->SetName("dummy B");
 
     vector<Entity*> enemies = { targetDummyA, targetDummyB };
+
+    // initializing AI Decision making
+    ShouldHealDecision* shouldHeal = new ShouldHealDecision();
+    //  replace these with the actual decisions you've created lol
+    ShouldHealDecision* dummyDecision = new ShouldHealDecision();
+    ShouldHealDecision* dummyDecisionTwo = new ShouldHealDecision();
+    ShouldHealDecision* dummyDecisionThree = new ShouldHealDecision();
+    CheckHealCDDecision* thisIsTheEnd = new CheckHealCDDecision();
+
+    //  assign paths to root
+    shouldHeal->TruePath = dummyDecision;
+    shouldHeal->FalsePath = dummyDecisionTwo;
+    //  go through each branch, assign paths accordingly
+    //  true path of root
+    dummyDecision->TruePath = thisIsTheEnd;
+    dummyDecision->FalsePath = dummyDecisionTwo;
+    //  false path of root
+    dummyDecisionTwo->TruePath = dummyDecisionThree;
+    dummyDecisionTwo->FalsePath = thisIsTheEnd;
+
+
+
 
     //  using the enemiesVector as a way to initialize the enemiesMap
     unordered_map<string, Entity*> enemiesMap = {};
@@ -179,6 +202,33 @@ int main()
             //  TODO: otherwise, invalid input
         }
        
+        //  do some decision making
+        //  auto& -> lazy type grabbing (it me, i'm lazy)
+
+        //  enemiesMap
+        //  the ampersand makes us not copy a bunch of entities lol
+        for (auto& enemy : enemies)
+        {
+            int errorCode = 0;
+            //  assign this to whatever our ROOT decision is
+            BaseDecision* currentDecision = shouldHeal;
+            //  iteration counter that update each iteration
+            int iterationCt = 0;
+
+            //  include a test case for if that iteration count exceeds your limit
+            while (currentDecision || iterationCt < 100)
+            {
+                currentDecision->EvaluateDecision(enemy, errorCode);
+                iterationCt++;
+            }
+
+            if (errorCode == -1)
+            {
+                //  tell the user they mucked up
+                //  printstring it out for debugging
+                int mrew = 2;
+            }
+        }
 
         testAbilityOne->UpdateCD();
         testAbilityTwo->UpdateCD();

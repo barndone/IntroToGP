@@ -40,6 +40,10 @@ public:
 	//  getters and setters
 	//  returntype FunctionName(input parameters);
 
+	//	used for AI entities
+	BaseAbility* CurrentAbility;
+	Entity* Target;
+
 	std::vector<BaseAbility*> AbilityList;
 	std::unordered_map<std::string, BaseAbility*> AbilityMap;
 

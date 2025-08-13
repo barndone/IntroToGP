@@ -1,8 +1,10 @@
 #pragma once
 #include "BaseDecision.h"
 
-class ShouldHealDecision : BaseDecision
+
+class ShouldHealDecision : public BaseDecision
 {
+public:
 	ShouldHealDecision();
 	ShouldHealDecision(Entity* decidingEntity);
 	~ShouldHealDecision();
