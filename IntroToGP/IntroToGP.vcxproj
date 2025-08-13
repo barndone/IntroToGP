@@ -132,6 +132,7 @@
     <ClCompile Include="CheckHealCDDecision.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PickTargetDecision.cpp" />
     <ClCompile Include="ShouldHealDecision.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -139,6 +140,8 @@
     <ClInclude Include="BaseDecision.h" />
     <ClInclude Include="CheckHealCDDecision.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="PickAttackDecision.h" />
+    <ClInclude Include="PickTargetDecision.h" />
     <ClInclude Include="ShouldHealDecision.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

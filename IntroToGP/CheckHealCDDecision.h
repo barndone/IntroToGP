@@ -8,5 +8,5 @@ public:
 	CheckHealCDDecision();
 	~CheckHealCDDecision();
 
-	BaseDecision* EvaluateDecision(Entity* decidingEntity, int& errorCode) override;
+	BaseDecision* EvaluateDecision(Entity* decidingEntity, vector<Entity*> targetEntities, int& errorCode) override;
 };

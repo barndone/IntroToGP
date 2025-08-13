@@ -15,5 +15,5 @@ public:
 	BaseDecision();
 	~BaseDecision();
 
-	virtual BaseDecision* EvaluateDecision(Entity* decidingEntity, int& errorCode);
+	virtual BaseDecision* EvaluateDecision(Entity* decidingEntity, vector<Entity*> targetEntities, int& errorCode);
 };

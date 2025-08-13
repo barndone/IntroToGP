@@ -96,10 +96,12 @@ int main()
         //  convey info to the player
         cout << "Turn Number: " + std::to_string(CurrentTurn) << endl;
         cout << "Enemies: " << endl;
+
         for (int currentEnemy = 0; currentEnemy < enemies.size(); currentEnemy++)
         {
             cout << enemies[currentEnemy]->GetName() + " : Current HP : " + to_string(enemies[currentEnemy]->GetCurHP()) << endl;
         }
+
         cout << "Player HP: " + std::to_string(testPlayer->GetCurHP()) << endl;
         cout << "Inputs:" << endl;
         cout << "\t1: Action List" << endl;
@@ -123,7 +125,6 @@ int main()
                 auto it = testPlayer->AbilityMap.find(pair.first);
                 if (it != testPlayer->AbilityMap.end())
                 {
-
                     if (!testPlayer->AbilityMap[pair.first]->CheckCD())
                     {
                         cout << pair.first + ": " + testPlayer->AbilityMap[pair.first]->AbilityName << endl;

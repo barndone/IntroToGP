@@ -8,7 +8,7 @@ CheckHealCDDecision::~CheckHealCDDecision()
 {
 }
 
-BaseDecision* CheckHealCDDecision::EvaluateDecision(Entity* decidingEntity, int& errorCode)
+BaseDecision* CheckHealCDDecision::EvaluateDecision(Entity* decidingEntity, vector<Entity*> targetEntities, int& errorCode)
 {
 	//	true- we can heal? assign our active ability/target to the entity and return a nullptr
 	//	false- call the function of the falsepath

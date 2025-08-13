@@ -21,7 +21,7 @@ BaseAbility::~BaseAbility()
 
 bool BaseAbility::CheckHit()
 {
-	int RandValue = std::rand() % 100 + 1;
+	int RandValue = std::rand() % 50 + 1;
 
 	//	if our RandValue is LESS or EQUAL to our hit chance, we hit!
 	//	otherwise, we don't!

@@ -8,7 +8,7 @@ BaseDecision::~BaseDecision()
 {
 }
 
-BaseDecision* BaseDecision::EvaluateDecision(Entity* decidingEntity, int& errorCode)
+BaseDecision* BaseDecision::EvaluateDecision(Entity* decidingEntity, vector<Entity*> targetEntities, int& errorCode)
 {
 	return nullptr;
 }

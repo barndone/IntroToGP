@@ -15,17 +15,17 @@ ShouldHealDecision::~ShouldHealDecision()
 
 }
 
-BaseDecision* ShouldHealDecision::EvaluateDecision(Entity* decidingEntity, int& errorCode)
+BaseDecision* ShouldHealDecision::EvaluateDecision(Entity* decidingEntity, vector<Entity*> targetEntities, int& errorCode)
 {
 	if (decidingEntity)
 	{
 		if (decidingEntity->GetCurHP() < 5)
 		{
-			return TruePath->EvaluateDecision(decidingEntity, errorCode);
+			return TruePath->EvaluateDecision(decidingEntity, targetEntities, errorCode);
 		}
 		else
 		{
-			return FalsePath->EvaluateDecision(decidingEntity, errorCode);
+			return FalsePath->EvaluateDecision(decidingEntity, targetEntities, errorCode);
 		}
 	}
 
