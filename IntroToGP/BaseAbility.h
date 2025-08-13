@@ -7,19 +7,16 @@ class BaseAbility
 private:
 	//	Variable for Hit Chance
 	int HitChance;
-
 	//	Our target used in cooldown calculations
 	int CD;				//	this is what the CD is full stop- i.e., 3 turns
 	//	our working Cooldown Value
 	int CurCDValue;		//	this represents where we are along our CD journey
 	//	when we attack, CurCDValue = cd
 	//		THEN every turn, we subtract from CurCDValue until it equals 0
-
 	//	Variable for Ability Level
 	int Level;
 	//	Does this Target Enemies?
 	bool TargetsEnemies;
-
 
 public:
 	std::string AbilityName;

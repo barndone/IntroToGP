@@ -6,9 +6,6 @@ BaseAbility::BaseAbility()
 {
 	// this is where we will assign 
 	// good defaults for all of our BaseAbility variables!
-
-	//	we are using the current time to initialize a seed for our random number generator
-	std::srand(std::time({}));
 	HitChance = 0;
 	CD = 1;
 	CurCDValue = 0;

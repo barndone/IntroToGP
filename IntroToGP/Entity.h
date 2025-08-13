@@ -34,7 +34,7 @@ protected:
 	int EXPYield;
 	int Level;
 
-
+	//	bool Dead;
 
 public:
 	//  getters and setters
@@ -53,6 +53,7 @@ public:
 	int GetAttack() { return Attack; }
 	int GetDefence() { return Defence; }
 	int GetSpeed() { return Speed; }
+	bool IsAlive() { return CurHealth >= 0; }
 
 	void SetName(string newName) { EntityName = newName; }
 	void SetCurHP(int input) { CurHealth = input; }

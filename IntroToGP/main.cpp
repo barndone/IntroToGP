@@ -18,6 +18,9 @@ using namespace std;
 
 int main()
 {
+    //	we are using the current time to initialize a seed for our random number generator
+    std::srand(std::time({}));
+
     //  step 1: intialize all of our objects/data 
     //   for the runtime of our game (or the start of our game)
     BaseAbility* testAbilityOne = new BaseAbility(/*input could go here*/);
@@ -109,11 +112,11 @@ int main()
             //  show the action list
             std::system("cls");
             cout << "Available Actions:" << endl;
-           //    for (int currentListEntry = 0; currentListEntry < testPlayer->AbilityList.size(); currentListEntry++)
-           //    {
-           //        cout << std::to_string(currentListEntry + 1) + 
-           //                ": " + testPlayer->AbilityList[currentListEntry]->AbilityName << endl;
-           //    }
+            //    for (int currentListEntry = 0; currentListEntry < testPlayer->AbilityList.size(); currentListEntry++)
+            //    {
+            //        cout << std::to_string(currentListEntry + 1) + 
+            //                ": " + testPlayer->AbilityList[currentListEntry]->AbilityName << endl;
+            //    }
 
             for (auto& pair : testPlayer->AbilityMap)
             {
@@ -131,6 +134,7 @@ int main()
             cin >> input;
             //  show the enemy list
             std::system("cls");
+
             if (input == "1")
             {
                 currentAbility = testPlayer->AbilityList[0];
@@ -209,24 +213,27 @@ int main()
         //  the ampersand makes us not copy a bunch of entities lol
         for (auto& enemy : enemies)
         {
-            int errorCode = 0;
-            //  assign this to whatever our ROOT decision is
-            BaseDecision* currentDecision = shouldHeal;
-            //  iteration counter that update each iteration
-            int iterationCt = 0;
-
-            //  include a test case for if that iteration count exceeds your limit
-            while (currentDecision || iterationCt < 100)
+            if (enemy->IsAlive())
             {
-                currentDecision->EvaluateDecision(enemy, errorCode);
-                iterationCt++;
-            }
-
-            if (errorCode == -1)
-            {
-                //  tell the user they mucked up
-                //  printstring it out for debugging
-                int mrew = 2;
+                int errorCode = 0;
+                //  assign this to whatever our ROOT decision is
+                BaseDecision* currentDecision = shouldHeal;
+                //  iteration counter that update each iteration
+                int iterationCt = 0;
+                
+                //  include a test case for if that iteration count exceeds your limit
+                while (currentDecision || iterationCt < 100)
+                {
+                    currentDecision = currentDecision->EvaluateDecision(enemy, errorCode);
+                    iterationCt++;
+                }
+                
+                if (errorCode == -1)
+                {
+                    //  tell the user they mucked up
+                    //  printstring it out for debugging
+                    int mrew = 2;
+                }
             }
         }
 
