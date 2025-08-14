@@ -37,23 +37,23 @@ void StatusAbility::TickStatuses(Entity* target)
 			//	update the given value on the target
 			switch (pair.first)
 			{
-			case StatToEffect::HEALTH:
-				//	"if statement" body
-				int delta = pair.second;
-				target->UpdateCurHP(delta);
-				break;
-			case StatToEffect::ATTACK:
-
-				break;
-			case StatToEffect::DEFENCE:
-
-				break;
-			case StatToEffect::SPEED:
-
-				break;
-			case StatToEffect::ACTION:
-
-				break;
+			//	case StatToEffect::HEALTH:
+			//		//	"if statement" body
+			//		int delta = pair.second;
+			//		target->UpdateCurHP(delta);
+			//		break;
+			//	case StatToEffect::ATTACK:
+			//	
+			//		break;
+			//	case StatToEffect::DEFENCE:
+			//	
+			//		break;
+			//	case StatToEffect::SPEED:
+			//	
+			//		break;
+			//	case StatToEffect::ACTION:
+			//	
+			//		break;
 			}
 		}
 		effect.curDuration--;
