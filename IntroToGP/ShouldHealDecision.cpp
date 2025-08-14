@@ -5,10 +5,10 @@ ShouldHealDecision::ShouldHealDecision()
 	DecidingEntity = nullptr;
 }
 
-ShouldHealDecision::ShouldHealDecision(Entity* decidingEntity)
-{
-	DecidingEntity = decidingEntity;
-}
+//	ShouldHealDecision::ShouldHealDecision(Entity* decidingEntity)
+//	{
+//		DecidingEntity = decidingEntity;
+//	}
 
 ShouldHealDecision::~ShouldHealDecision()
 {

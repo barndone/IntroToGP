@@ -114,11 +114,6 @@ int main()
             //  show the action list
             std::system("cls");
             cout << "Available Actions:" << endl;
-            //    for (int currentListEntry = 0; currentListEntry < testPlayer->AbilityList.size(); currentListEntry++)
-            //    {
-            //        cout << std::to_string(currentListEntry + 1) + 
-            //                ": " + testPlayer->AbilityList[currentListEntry]->AbilityName << endl;
-            //    }
 
             for (auto& pair : testPlayer->AbilityMap)
             {
@@ -130,73 +125,66 @@ int main()
                         cout << pair.first + ": " + testPlayer->AbilityMap[pair.first]->AbilityName << endl;
                     }
                 }
+                else
+                {
+                    //  TODO: warn player of bad input
+                }
             }
 
             cin >> input;
+
             //  show the enemy list
             std::system("cls");
 
-            if (input == "1")
+            //  try to find the input
+            auto it = testPlayer->AbilityMap.find(input);
+            
+            if (it != testPlayer->AbilityMap.end())
             {
-                currentAbility = testPlayer->AbilityList[0];
+                //  cache our current ability
+                testPlayer->CurrentAbility = it->second;
 
-                for (int currentEnemy = 0; currentEnemy < enemies.size(); currentEnemy++)
+                //  write each of the enemies to the screen
+                for (auto& pair : enemiesMap)
                 {
-                    cout << to_string(currentEnemy + 1) + ": " + enemies[currentEnemy]->GetName() << endl;
+                    //  find the entry with the key value of this pair with an iterator
+                    auto it = enemiesMap.find(pair.first);
+                    //  check to make sure it exists
+                    if (it != enemiesMap.end())
+                    {
+                        //  if they ain't dead
+                        if (enemiesMap[pair.first]->IsAlive())
+                        {
+                            cout << pair.first + ": " + enemiesMap[pair.first]->GetName() << endl;
+                        }
+                    }
+                    else
+                    {
+                        //  TODO: warn player of bad input
+                    }
                 }
 
+                //  grab input for enemy selection
                 cin >> input;
 
-                if (input == "1")
+                //  try to find the input
+                auto it = enemiesMap.find(input);
+                if (it != enemiesMap.end())
                 {
-                    //  assign currentTarget to first enemy!
-                    currentTarget = enemies[0];
-
-                    testPlayer->Action(*currentAbility, *currentTarget);
+                    //   cache the target to the selected enemy
+                    testPlayer->Target = it->second;
+                    //   ACT
+                    testPlayer->Action(*testPlayer->CurrentAbility, *testPlayer->Target);
                 }
-                else if (input == "2")
+                else
                 {
-                    //  assign currentTarget to second enemy!
-                    currentTarget = enemies[1];
-
-                    testPlayer->Action(*currentAbility, *currentTarget);
-                }
-            }
-            else if (input == "2")
-            {
-                currentAbility = testPlayer->AbilityList[1];
-
-                for (int currentEnemy = 0; currentEnemy < enemies.size(); currentEnemy++)
-                {
-                    cout << to_string(currentEnemy + 1) + ": " + enemies[currentEnemy]->GetName() << endl;
-                }
-
-                cin >> input;
-
-                if (input == "1")
-                {
-                    //  assign currentTarget to first enemy!
-                    currentTarget = enemies[0];
-
-                    testPlayer->Action(*currentAbility, *currentTarget);
-                }
-                else if (input == "2")
-                {
-                    //  assign currentTarget to second enemy!
-                    currentTarget = enemies[1];
-
-                    testPlayer->Action(*currentAbility, *currentTarget);
-                }
-                else 
-                {
-                    //TODO: error checking for input
+                    //  TODO: warn player of bad input
                 }
             }
             else
             {
                 //  TODO: warn player of bad input
             }
-
         }
         else if (input == "2")
         {
@@ -212,35 +200,37 @@ int main()
 
         //  enemiesMap
         //  the ampersand makes us not copy a bunch of entities lol
-        for (auto& enemy : enemies)
-        {
-            if (enemy->IsAlive())
-            {
-                int errorCode = 0;
-                //  assign this to whatever our ROOT decision is
-                BaseDecision* currentDecision = shouldHeal;
-                //  iteration counter that update each iteration
-                int iterationCt = 0;
-                
-                //  include a test case for if that iteration count exceeds your limit
-                while (currentDecision || iterationCt < 100)
-                {
-                    currentDecision = currentDecision->EvaluateDecision(enemy, errorCode);
-                    iterationCt++;
-                }
-                
-                if (errorCode == -1)
-                {
-                    //  tell the user they mucked up
-                    //  printstring it out for debugging
-                    int mrew = 2;
-                }
-            }
-        }
+       //    for (auto& enemy : enemies)
+       //    {
+       //        if (enemy->IsAlive())
+       //        {
+       //            int errorCode = 0;
+       //            //  iteration counter that update each iteration
+       //            int iterationCt = 0;
+       //            //  assign this to whatever our ROOT decision is
+       //            BaseDecision* currentDecision = shouldHeal;
+       //            
+       //            //  include a test case for if that iteration count exceeds your limit
+       //            while (currentDecision || iterationCt < 100)
+       //            {
+       //                //  assign to the return value of the function so we can actually exit the while loop, lol
+       //                //currentDecision = currentDecision->EvaluateDecision(enemy, errorCode);
+       //                iterationCt++;
+       //            }
+       //            
+       //            if (errorCode == -1)
+       //            {
+       //                //  tell the user they mucked up
+       //                //  printstring it out for debugging
+       //                int mrew = 2;
+       //            }
+       //        }
+       //    }
 
         testAbilityOne->UpdateCD();
         testAbilityTwo->UpdateCD();
         CurrentTurn++;
+
         //  clears the console window so that we only have relevant information displayed
         std::system("cls");
     }
