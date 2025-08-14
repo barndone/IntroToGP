@@ -18,7 +18,12 @@ private:
 	//	Does this Target Enemies?
 	bool TargetsEnemies;
 
+
+
 public:
+	bool CausesStun;
+	int StunLength;
+	int StunDamage;
 	std::string AbilityName;
 
 	int GetHitChance() { return HitChance; }

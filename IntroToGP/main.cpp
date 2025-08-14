@@ -16,6 +16,8 @@
 #include "BaseDecision.h"
 using namespace std;
 
+//  TODO: write an initiative system
+
 int main()
 {
     //	we are using the current time to initialize a seed for our random number generator
@@ -44,6 +46,16 @@ int main()
     targetDummyB->SetName("dummy B");
 
     vector<Entity*> enemies = { targetDummyA, targetDummyB };
+    //  using the enemiesVector as a way to initialize the enemiesMap
+    unordered_map<string, Entity*> enemiesMap = {};
+    for (int i = 0; i < enemies.size(); i++)
+    {
+        //  adds a pair to the map with a key for the corresponding string input that is associated with the given enemy
+        enemiesMap.emplace(to_string(i + 1), enemies[i]);
+    }
+
+    vector<Entity*> party = { testPlayer };
+
 
     // initializing AI Decision making
     ShouldHealDecision* shouldHeal = new ShouldHealDecision();
@@ -63,18 +75,6 @@ int main()
     //  false path of root
     dummyDecisionTwo->TruePath = dummyDecisionThree;
     dummyDecisionTwo->FalsePath = thisIsTheEnd;
-
-
-
-
-    //  using the enemiesVector as a way to initialize the enemiesMap
-    unordered_map<string, Entity*> enemiesMap = {};
-
-    for (int i = 0; i < enemies.size(); i++)
-    {
-        //  adds a pair to the map with a key for the corresponding string input that is associated with the given enemy
-        enemiesMap.emplace(to_string(i + 1), enemies[i]);
-    }
 
     //  init the ability maps for each entity using their abilitylist
     //  TODO: init enemies
@@ -106,6 +106,7 @@ int main()
         cout << "Inputs:" << endl;
         cout << "\t1: Action List" << endl;
         cout << "\t2: Skip the Turn" << endl;
+
         //  for collecting input from the player
         string input;
         cin >> input;
@@ -194,39 +195,37 @@ int main()
         {
             //  TODO: otherwise, invalid input
         }
-       
-        //  do some decision making
-        //  auto& -> lazy type grabbing (it me, i'm lazy)
+       //  do some decision making
+       //  auto& -> lazy type grabbing (it me, i'm lazy)
 
-        //  enemiesMap
-        //  the ampersand makes us not copy a bunch of entities lol
-       //    for (auto& enemy : enemies)
-       //    {
-       //        if (enemy->IsAlive())
-       //        {
-       //            int errorCode = 0;
-       //            //  iteration counter that update each iteration
-       //            int iterationCt = 0;
-       //            //  assign this to whatever our ROOT decision is
-       //            BaseDecision* currentDecision = shouldHeal;
-       //            
-       //            //  include a test case for if that iteration count exceeds your limit
-       //            while (currentDecision || iterationCt < 100)
-       //            {
-       //                //  assign to the return value of the function so we can actually exit the while loop, lol
-       //                //currentDecision = currentDecision->EvaluateDecision(enemy, errorCode);
-       //                iterationCt++;
-       //            }
-       //            
-       //            if (errorCode == -1)
-       //            {
-       //                //  tell the user they mucked up
-       //                //  printstring it out for debugging
-       //                int mrew = 2;
-       //            }
-       //        }
-       //    }
-
+       //  enemiesMap
+       //  the ampersand makes us not copy a bunch of entities lol
+      //    for (auto& enemy : enemies)
+      //    {
+      //        if (enemy->IsAlive())
+      //        {
+      //            int errorCode = 0;
+      //            //  iteration counter that update each iteration
+      //            int iterationCt = 0;
+      //            //  assign this to whatever our ROOT decision is
+      //            BaseDecision* currentDecision = shouldHeal;
+      //            
+      //            //  include a test case for if that iteration count exceeds your limit
+      //            while (currentDecision || iterationCt < 100)
+      //            {
+      //                //  assign to the return value of the function so we can actually exit the while loop, lol
+      //                currentDecision = currentDecision->EvaluateDecision(enemy, party, errorCode);
+      //                iterationCt++;
+      //            }
+      //            
+      //            if (errorCode == -1)
+      //            {
+      //                //  tell the user they mucked up
+      //                //  printstring it out for debugging
+      //                int mrew = 2;
+      //            }
+      //        }
+      //    }
         testAbilityOne->UpdateCD();
         testAbilityTwo->UpdateCD();
         CurrentTurn++;
@@ -234,8 +233,6 @@ int main()
         //  clears the console window so that we only have relevant information displayed
         std::system("cls");
     }
-
-
     //  step 3: cleanup our data when the application should be closing
 }
 

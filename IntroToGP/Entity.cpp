@@ -30,5 +30,14 @@ void Entity::Action(BaseAbility& abilityToUse, Entity& targetEntity)
 	deltaHealth = (this->Attack - targetEntity.GetDefence()) * -1;
 
 	abilityToUse.ActivateCD();
-	targetEntity.UpdateCurHP(deltaHealth);
+	if (!abilityToUse.CausesStun)
+	{
+		targetEntity.UpdateCurHP(deltaHealth);
+	}
+	//	update the CurCDValue by StunLength
+	//	Set the entity to stunned
+	//	Cause the entity to take damage by the stunDamage at the end of each turn
+
+	//	if it affects the ability to use an ability- change the CurCDValue instead (or in addition) to health!
+
 }

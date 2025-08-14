@@ -6,6 +6,7 @@
 #include <unordered_map>
 
 #include "BaseAbility.h"
+#include "StatusAbility.h"
 
 using namespace std;
 
@@ -44,8 +45,13 @@ public:
 	BaseAbility* CurrentAbility;
 	Entity* Target;
 
+	//	used for iteration
 	std::vector<BaseAbility*> AbilityList;
+	//	used for grabbing input
 	std::unordered_map<std::string, BaseAbility*> AbilityMap;
+
+	std::vector <StatusEffect> StatusList;
+
 
 	string GetName() { return EntityName; }
 	int GetMaxHP() { return MaxHealth; }

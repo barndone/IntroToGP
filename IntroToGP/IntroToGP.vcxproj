@@ -132,8 +132,10 @@
     <ClCompile Include="CheckHealCDDecision.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PickAttackDecision.cpp" />
     <ClCompile Include="PickTargetDecision.cpp" />
     <ClCompile Include="ShouldHealDecision.cpp" />
+    <ClCompile Include="StatusAbility.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseAbility.h" />
@@ -143,6 +145,7 @@
     <ClInclude Include="PickAttackDecision.h" />
     <ClInclude Include="PickTargetDecision.h" />
     <ClInclude Include="ShouldHealDecision.h" />
+    <ClInclude Include="StatusAbility.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
