@@ -16,7 +16,9 @@ private:
 	//	Variable for Ability Level
 	int Level;
 	//	Does this Target Enemies?
-	bool TargetsEnemies;
+	bool TargetsEnemies = true;
+
+	int DamageMod = 100;
 
 
 
@@ -30,6 +32,7 @@ public:
 	int GetCD() { return CD; }
 	int GetLevel() { return Level; }
 	bool GetTargetsEnemies() { return TargetsEnemies; }
+	int GetDamageMod() { return DamageMod; }
 
 	void SetHitChance(int input) { HitChance = input; }
 	void SetCD(int input) { CD = input; }
