@@ -44,7 +44,7 @@ void Entity::Action(BaseAbility& abilityToUse, Entity& targetEntity)
 
 void Entity::Tick()
 {
-	//	step one, update cooldowns
+	//	step one, update cooldowns 
 
 	//	step two, apply ticks for damage
 
