@@ -27,7 +27,7 @@ BaseDecision* PickAttackDecision::EvaluateDecision(Entity* decidingEntity, vecto
         return nullptr;
     }
     
-    //  case 2: two entries
+    //  case 2: two+ entries
     else
     {
         curAbility = decidingEntity->AbilityList[0];
@@ -40,6 +40,7 @@ BaseDecision* PickAttackDecision::EvaluateDecision(Entity* decidingEntity, vecto
                 curAbility = decidingEntity->AbilityList[idx];
             }
         }
+        decidingEntity->CurrentAbility = curAbility;
+        return nullptr;
     }
-    return nullptr;
 }

@@ -72,5 +72,6 @@ public:
 	~Entity();
 
 	void Action(BaseAbility& abilityToUse, Entity& targetEntity);
+	void Tick();
 	//void Skip();
 };

@@ -3,14 +3,7 @@
 
 StatusAbility::StatusAbility()
 {
-	Effect.statsToEffect.emplace(StatToEffect::HEALTH, 3);
-
-	//	auto it = Effect.statsToEffect.find(StatToEffect::HEALTH);
-	//	if (it != Effect.statsToEffect.end())
-	//	{
-	//		it->first == StatToEffect::HEALTH;
-	//		it->second -= 1;
-	//	}
+	
 }
 
 StatusAbility::~StatusAbility()

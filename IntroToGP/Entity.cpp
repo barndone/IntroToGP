@@ -41,3 +41,12 @@ void Entity::Action(BaseAbility& abilityToUse, Entity& targetEntity)
 	//	if it affects the ability to use an ability- change the CurCDValue instead (or in addition) to health!
 
 }
+
+void Entity::Tick()
+{
+	//	step one, update cooldowns
+
+	//	step two, apply ticks for damage
+
+	//	step three, update status durations
+}
