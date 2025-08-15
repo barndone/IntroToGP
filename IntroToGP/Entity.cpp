@@ -45,8 +45,25 @@ void Entity::Action(BaseAbility& abilityToUse, Entity& targetEntity)
 void Entity::Tick()
 {
 	//	step one, update cooldowns 
+	for (auto& abilities : AbilityList)
+	{
+		if (abilities->CheckCD())
+		{
+			abilities->UpdateCD();
+		}
+	}
+	for (auto& effect : StatusList)
+	{
+		//	step two, apply ticks for damage
+		auto it = effect.statsToEffect.find(StatToEffect::HEATH);
+		if (it != statsToEffect.end())
+		{
+			CurHealth-= it->second;
+		}	
+		
+		//	step three, update status durations
+		effect.curDuration--;
+	}
 
-	//	step two, apply ticks for damage
 
-	//	step three, update status durations
 }
