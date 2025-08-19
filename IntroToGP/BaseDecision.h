@@ -1,13 +1,10 @@
 #pragma once
-#include "Entity.h"
-#include <iostream>
-#include <stdlib.h>
-
+#include <vector>
 
 class BaseDecision
 {
 public:
-	Entity* DecidingEntity;
+	class Entity* DecidingEntity;
 
 	BaseDecision* TruePath = nullptr;
 	BaseDecision* FalsePath = nullptr;
@@ -15,5 +12,5 @@ public:
 	BaseDecision();
 	~BaseDecision();
 
-	virtual BaseDecision* EvaluateDecision(Entity* decidingEntity, vector<Entity*> targetEntities, int& errorCode);
+	virtual BaseDecision* EvaluateDecision(class Entity* decidingEntity, class std::vector<class Entity*> targetEntities, int& errorCode);
 };

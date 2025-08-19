@@ -5,9 +5,6 @@
 //  corresponds to a map data type- key : value association
 #include <unordered_map>
 
-#include "BaseAbility.h"
-#include "StatusAbility.h"
-
 using namespace std;
 
 //  this is where we will declare things for our entities
@@ -42,15 +39,15 @@ public:
 	//  returntype FunctionName(input parameters);
 
 	//	used for AI entities
-	BaseAbility* CurrentAbility;
+	class BaseAbility* CurrentAbility;
 	Entity* Target;
 
 	//	used for iteration
-	std::vector<BaseAbility*> AbilityList;
+	std::vector<class BaseAbility*> AbilityList;
 	//	used for grabbing input
-	std::unordered_map<std::string, BaseAbility*> AbilityMap;
+	std::unordered_map<std::string, class BaseAbility*> AbilityMap;
 
-	std::vector <StatusEffect> StatusList;
+	std::vector <class StatusEffect> StatusList;
 
 
 	string GetName() { return EntityName; }
@@ -71,7 +68,7 @@ public:
 	Entity();
 	~Entity();
 
-	void Action(BaseAbility& abilityToUse, Entity& targetEntity);
+	void Action(class BaseAbility& abilityToUse, Entity& targetEntity);
 	void Tick();
 	//void Skip();
 };

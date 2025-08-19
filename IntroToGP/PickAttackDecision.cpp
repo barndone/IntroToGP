@@ -1,4 +1,7 @@
 #include "PickAttackDecision.h"
+#include "Entity.h"
+#include "BaseAbility.h"
+#include "StatusAbility.h"
 
 PickAttackDecision::PickAttackDecision()
 {

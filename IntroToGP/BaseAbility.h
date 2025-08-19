@@ -23,7 +23,7 @@ private:
 
 
 public:
-	bool CausesStun;
+	bool CausesStun = false;
 	int StunLength;
 	int StunDamage;
 	std::string AbilityName;

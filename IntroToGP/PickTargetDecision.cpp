@@ -1,4 +1,7 @@
 #include "PickTargetDecision.h"
+#include "Entity.h"
+#include "BaseAbility.h"
+#include "StatusAbility.h"
 
 PickTargetDecision::PickTargetDecision()
 {

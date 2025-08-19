@@ -1,3 +1,6 @@
+
+#include "BaseAbility.h"
+#include "StatusAbility.h"
 #include "Entity.h"
 //  this is where we will define our entities
 
@@ -55,8 +58,8 @@ void Entity::Tick()
 	for (auto& effect : StatusList)
 	{
 		//	step two, apply ticks for damage
-		auto it = effect.statsToEffect.find(StatToEffect::HEATH);
-		if (it != statsToEffect.end())
+		auto it = effect.statsToEffect.find(HEALTH);
+		if (it != effect.statsToEffect.end())
 		{
 			CurHealth-= it->second;
 		}	

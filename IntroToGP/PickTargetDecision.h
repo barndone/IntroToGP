@@ -6,7 +6,7 @@ class PickTargetDecision : public BaseDecision
 	PickTargetDecision();
 	~PickTargetDecision();
 
-	BaseDecision* EvaluateDecision(Entity* decidingEntity, vector<Entity*> targetEntities, int& errorCode) override;
+	BaseDecision* EvaluateDecision(class Entity* decidingEntity, std::vector<class Entity*> targetEntities, int& errorCode) override;
 
 
 };

@@ -1,4 +1,7 @@
 #include "ShouldHealDecision.h"
+#include "Entity.h"
+#include "BaseAbility.h"
+#include "StatusAbility.h"
 
 ShouldHealDecision::ShouldHealDecision()
 {
